@@ -2,3 +2,17 @@
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
 <p><%= @restaurant.category %></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <h2>Rating</h2>
+    <li class="list-group-item"><%= review.rating %></li>
+    <h2>Review</h2>
+    <li class="list-group-item"><%= review.content %></li>
+   <%= link_to "Remove Review",
+                  restaurant_review_path(@restaurant,review),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+  <% end %>
+</ul>
+<%= link_to 'Back', restaurants_path %> |
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>

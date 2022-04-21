@@ -1,11 +1,7 @@
-<%= form_for [@restaurant, @review] do |f| %>
-  <%= f.label :Name %>
-  <%= f.text_field :name %>
-  <%= f.label :Address %>
-  <%= f.text_field :address %>
-  <%= f.label :Phone_Number %>
-  <%= f.text_field :phone_number %>
-  <%= f.label :Category %>
-  <%= f.text_field :category %>
-  <%= f.submit %>
+<%= simple_form_for (@restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.select :category, options_for_select(["chinese", "italian", "japanese", "french belgian"]), :class => 'genForm_dropBox'%>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
